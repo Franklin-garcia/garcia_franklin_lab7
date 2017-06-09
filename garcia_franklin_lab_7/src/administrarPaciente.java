@@ -17,19 +17,20 @@ import java.util.ArrayList;
  *
  * @author Franklin Garcia
  */
-public class administrarPersona {
-    private ArrayList<Persona> listaPersonas = new ArrayList();
-    private File archivo = null;
+public class administrarPaciente {
+        private ArrayList<Paciente> listaPersonas = new ArrayList();
+    private File archivo;
 
-    public administrarPersona(String Path) {
+    public administrarPaciente(String Path) {
         archivo = new File(Path);
+        this.listaPersonas = new ArrayList();
     }
 
-    public ArrayList<Persona> getListaPersonas() {
+    public ArrayList<Paciente> getListaPersonas() {
         return listaPersonas;
     }
 
-    public void setListaPersonas(ArrayList<Persona> listaPersonas) {
+    public void setListaPersonas(ArrayList<Paciente> listaPersonas) {
         this.listaPersonas = listaPersonas;
     }
 
@@ -47,19 +48,19 @@ public class administrarPersona {
     }
 
     //Mutador extra
-    public void setPersona(Persona P) {
+    public void setPersona(Paciente P) {
         this.listaPersonas.add(P);
     }
 
     public void cargarArchivo() {
         try {
             listaPersonas = new ArrayList();
-            Persona temp;
+            Paciente temp;
             if (archivo.exists()) {
                 FileInputStream entrada = new FileInputStream(archivo);
                 ObjectInputStream objeto = new ObjectInputStream(entrada);
                 try {
-                    while ((temp = (Persona) objeto.readObject()) != null) {
+                    while ((temp = (Paciente) objeto.readObject()) != null) {
                         listaPersonas.add(temp);
                     }
                 } catch (EOFException e) {
@@ -78,7 +79,7 @@ public class administrarPersona {
         try {
             fw = new FileOutputStream(archivo);
             bw = new ObjectOutputStream(fw);
-            for (Persona t : listaPersonas) {
+            for (Paciente t : listaPersonas) {
                 bw.writeObject(t);
             }
         } catch (Exception e) {

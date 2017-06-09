@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Doctor extends Persona{
       private ArrayList especialidades=new ArrayList(); 
-      private ArrayList pacientes=new ArrayList(); 
+      private ArrayList<Paciente> pacientes=new ArrayList(); 
       private int años_doctor;
       private String horario;
       private ArrayList dias_trabajo=new ArrayList();
@@ -36,11 +36,11 @@ public class Doctor extends Persona{
         this.especialidades = especialidades;
     }
 
-    public ArrayList getPacientes() {
+    public ArrayList<Paciente> getPacientes() {
         return pacientes;
     }
 
-    public void setPacientes(ArrayList pacientes) {
+    public void setPacientes(ArrayList<Paciente> pacientes) {
         this.pacientes = pacientes;
     }
 
