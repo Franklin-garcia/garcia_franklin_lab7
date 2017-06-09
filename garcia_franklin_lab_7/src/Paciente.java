@@ -19,7 +19,7 @@ public class Paciente extends Persona {
     private String tipo_sangre;
     private String causa_visita; 
     private ArrayList alergias=new ArrayList(); 
-    private ArrayList órganos=new ArrayList();
+    private ArrayList<Organo> órganos=new ArrayList();
 
     public Paciente() {
         super();
@@ -81,11 +81,11 @@ public class Paciente extends Persona {
         this.alergias = alergias;
     }
 
-    public ArrayList getÓrganos() {
+    public ArrayList<Organo> getÓrganos() {
         return órganos;
     }
 
-    public void setÓrganos(ArrayList órganos) {
+    public void setÓrganos(ArrayList<Organo> órganos) {
         this.órganos = órganos;
     }
 

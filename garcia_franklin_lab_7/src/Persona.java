@@ -1,3 +1,6 @@
+
+import java.io.Serializable;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,7 +11,8 @@
  *
  * @author Franklin Garcia
  */
-public class Persona {
+public class Persona implements Serializable{
+       private static final long SerialVersionUID=665L;
      String nombre;
      private int edad; 
      private int ID;
