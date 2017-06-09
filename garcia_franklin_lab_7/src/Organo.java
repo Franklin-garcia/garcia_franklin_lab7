@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class Organo {
    private static final long SerialVersionUID=665L;
-   private Color color;
+   private String color;
    private ArrayList características=new ArrayList();
    private int nivel_efectividad; 
    private int nivel_potenciado;   
@@ -23,18 +23,18 @@ public class Organo {
     public Organo() {
     }
 
-    public Organo(Color color, int nivel_efectividad, int nivel_potenciado, int nivel_prueba) {
+    public Organo(String color, int nivel_efectividad, int nivel_potenciado, int nivel_prueba) {
         this.color = color;
         this.nivel_efectividad = nivel_efectividad;
         this.nivel_potenciado = nivel_potenciado;
         this.nivel_prueba = nivel_prueba;
     }
 
-    public Color getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(Color color) {
+    public void setColor(String color) {
         this.color = color;
     }
 

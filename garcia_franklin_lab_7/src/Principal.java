@@ -50,6 +50,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         ta_horario = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
+        jLabel21 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -200,15 +201,23 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Crear Medico", jPanel2);
 
+        jLabel21.setText("Crear organo");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(242, 242, 242)
+                .addComponent(jLabel21)
+                .addContainerGap(294, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 454, Short.MAX_VALUE)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel21)
+                .addContainerGap(416, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crear organo", jPanel3);
@@ -419,7 +428,15 @@ public class Principal extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         administrarPersona ap = new administrarPersona("./Persona.cbm");
 //int años_doctor, String horario, String nombre, int edad, int ID, double altura, double peso, String sexo
-        ap.setPersona(new Doctor());
+        ap.setPersona(new Doctor(Integer.parseInt(tf_años.getText()),ta_horario.getText(),tf_nombre1.getText(),Integer.parseInt(tf_nombre1.getText()),Integer.parseInt(tf_id1.getText()),Double.parseDouble(tf_altura1.getText()),Double.parseDouble(tf_peso1.getText()),tf_sexo1.getText()));
+    tf_años.setText("");
+    ta_horario.setText("");
+    tf_nombre1.setText("");
+    tf_nombre1.setText("");
+    tf_id1.setText("");
+    tf_altura1.setText("");
+    tf_peso1.setText("");
+    tf_sexo1.setText("");    
         ap.escribirArchivo();
         JOptionPane.showMessageDialog(this,"Se agrego");
     }//GEN-LAST:event_jButton2MouseClicked
@@ -475,6 +492,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
