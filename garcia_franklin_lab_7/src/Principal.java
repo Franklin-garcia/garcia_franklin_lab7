@@ -32,6 +32,9 @@ public class Principal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        menu_pop = new javax.swing.JPopupMenu();
+        eliminar = new javax.swing.JMenuItem();
+        modificar = new javax.swing.JMenuItem();
         tab = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -99,6 +102,17 @@ public class Principal extends javax.swing.JFrame {
         cb_doctor2 = new javax.swing.JComboBox<>();
         jScrollPane4 = new javax.swing.JScrollPane();
         jt_personas = new javax.swing.JTree();
+
+        eliminar.setText("jMenuItem1");
+        eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminarActionPerformed(evt);
+            }
+        });
+        menu_pop.add(eliminar);
+
+        modificar.setText("jMenuItem1");
+        menu_pop.add(modificar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -529,6 +543,11 @@ public class Principal extends javax.swing.JFrame {
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Persona");
         jt_personas.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jt_personas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jt_personasMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(jt_personas);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -641,7 +660,7 @@ public class Principal extends javax.swing.JFrame {
         }
 
         if (tab.getSelectedIndex() == 2) {
-            
+
             DefaultComboBoxModel modelo2 = new DefaultComboBoxModel(ap.getListaPersonas().toArray());
             cb_paciente1.setModel(modelo2);
 
@@ -714,10 +733,10 @@ public class Principal extends javax.swing.JFrame {
 
         DefaultMutableTreeNode nodo_persona;
         nodo_persona = new DefaultMutableTreeNode(cb_doctor2.getSelectedItem());
-        
+
         DefaultMutableTreeNode Pacientes;
         Pacientes = new DefaultMutableTreeNode(ad.getListaPersonas().get(cb_doctor2.getSelectedIndex()).getPacientes());
-        
+
         nodo_persona.add(Pacientes);
         raiz.add(nodo_persona);
         m.reload();
@@ -727,6 +746,24 @@ public class Principal extends javax.swing.JFrame {
     private void cb_paciente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_paciente1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_paciente1ActionPerformed
+
+    private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
+        DefaultTreeModel m = (DefaultTreeModel) jt_personas.getModel();
+        m.removeNodeFromParent(nodo_seleccionado);
+        m.reload();
+    }//GEN-LAST:event_eliminarActionPerformed
+
+    private void jt_personasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jt_personasMouseClicked
+        if (evt.isMetaDown()) {
+            int row = jt_personas.getClosestRowForLocation(evt.getX(), evt.getY());
+            jt_personas.setSelectionRow(row);
+            jt_personas.setSelectionRow(row);
+            Object v1 = jt_personas.getSelectionPath().getLastPathComponent();
+            nodo_seleccionado = (DefaultMutableTreeNode) v1;
+                doctor_seleccionado = (Doctor) nodo_seleccionado.getUserObject();
+                menu_pop.show(evt.getComponent(), evt.getX(), evt.getY());
+        }
+    }//GEN-LAST:event_jt_personasMouseClicked
 
     /**
      * @param args the command line arguments
@@ -769,6 +806,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_organo;
     private javax.swing.JComboBox<String> cb_paciente;
     private javax.swing.JComboBox<Paciente> cb_paciente1;
+    private javax.swing.JMenuItem eliminar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -813,6 +851,8 @@ public class Principal extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jd_alta;
     private com.toedter.calendar.JDateChooser jd_ingreso;
     private javax.swing.JTree jt_personas;
+    private javax.swing.JPopupMenu menu_pop;
+    private javax.swing.JMenuItem modificar;
     private javax.swing.JTextArea ta_causa;
     private javax.swing.JTextArea ta_horario;
     private javax.swing.JTabbedPane tab;
@@ -834,4 +874,6 @@ public class Principal extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 public administrarDoctor ad = new administrarDoctor("./Doctor.cbm");
     public administrarPaciente ap = new administrarPaciente("./Paciente.cbm");
+    DefaultMutableTreeNode nodo_seleccionado;
+    Doctor doctor_seleccionado;
 }
