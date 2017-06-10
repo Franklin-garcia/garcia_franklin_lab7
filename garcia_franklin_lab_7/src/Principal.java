@@ -103,7 +103,7 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jt_personas = new javax.swing.JTree();
 
-        eliminar.setText("jMenuItem1");
+        eliminar.setText("Eliminar");
         eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarActionPerformed(evt);
@@ -111,7 +111,12 @@ public class Principal extends javax.swing.JFrame {
         });
         menu_pop.add(eliminar);
 
-        modificar.setText("jMenuItem1");
+        modificar.setText("Modificar");
+        modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarActionPerformed(evt);
+            }
+        });
         menu_pop.add(modificar);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -764,6 +769,10 @@ public class Principal extends javax.swing.JFrame {
                 menu_pop.show(evt.getComponent(), evt.getX(), evt.getY());
         }
     }//GEN-LAST:event_jt_personasMouseClicked
+
+    private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
+       
+    }//GEN-LAST:event_modificarActionPerformed
 
     /**
      * @param args the command line arguments
