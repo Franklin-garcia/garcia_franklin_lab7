@@ -51,7 +51,6 @@ public class administrarPaciente {
     public void setPersona(Paciente P) {
         this.listaPersonas.add(P);
     }
-
     public void cargarArchivo() {
         try {
             listaPersonas = new ArrayList();

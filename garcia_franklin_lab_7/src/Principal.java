@@ -535,31 +535,31 @@ public class Principal extends javax.swing.JFrame {
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(194, 194, 194)
-                        .addComponent(cb_doctor2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(jButton4))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(235, 235, 235)
-                        .addComponent(jLabel29)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addGap(0, 82, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(69, 69, 69))
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(213, 213, 213)
+                        .addComponent(jButton4))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(175, 175, 175)
+                        .addComponent(cb_doctor2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(223, 223, 223)
+                        .addComponent(jLabel29)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addGap(48, 48, 48)
                 .addComponent(jLabel29)
-                .addGap(26, 26, 26)
+                .addGap(18, 18, 18)
                 .addComponent(cb_doctor2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(18, 18, 18)
                 .addComponent(jButton4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -633,25 +633,23 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2MouseClicked
 
     private void tabStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_tabStateChanged
-
+        ap.cargarArchivo();
+        ad.cargarArchivo();
         if (tab.getSelectedIndex() == 1) {
-            ap.cargarArchivo();
             DefaultComboBoxModel modelo = new DefaultComboBoxModel(ap.getListaPersonas().toArray());
             cb_paciente.setModel(modelo);
         }
 
         if (tab.getSelectedIndex() == 2) {
-            ap.cargarArchivo();
+            
             DefaultComboBoxModel modelo2 = new DefaultComboBoxModel(ap.getListaPersonas().toArray());
             cb_paciente1.setModel(modelo2);
 
-            ad.cargarArchivo();
             DefaultComboBoxModel modelo1 = new DefaultComboBoxModel(ad.getListaPersonas().toArray());
             cb_doctor1.setModel(modelo1);
         }
 
         if (tab.getSelectedIndex() == 4) {
-            ad.cargarArchivo();
             DefaultComboBoxModel modelo3 = new DefaultComboBoxModel(ad.getListaPersonas().toArray());
             cb_doctor2.setModel(modelo3);
         }
@@ -659,6 +657,7 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_tabStateChanged
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+
         ap.cargarArchivo();
         //String color, int nivel_efectividad, int nivel_potenciado, int nivel_prueba
         int efectividad = 0;
@@ -686,8 +685,6 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3MouseClicked
 
     private void jButton6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton6MouseClicked
-        ap.cargarArchivo();
-        ad.cargarArchivo();
         //((Doctor)this.cb_doctor1.getSelectedItem()).getPacientes().add((Paciente)(this.cb_paciente1.getSelectedItem()));
         ad.getListaPersonas().get(cb_doctor1.getSelectedIndex()).
                 getPacientes().add(new Paciente(
@@ -718,6 +715,13 @@ public class Principal extends javax.swing.JFrame {
         DefaultMutableTreeNode nodo_persona;
         nodo_persona = new DefaultMutableTreeNode(cb_doctor2.getSelectedItem());
         
+        DefaultMutableTreeNode Pacientes;
+        Pacientes = new DefaultMutableTreeNode(ad.getListaPersonas().get(cb_doctor2.getSelectedIndex()).getPacientes());
+        
+        nodo_persona.add(Pacientes);
+        raiz.add(nodo_persona);
+        m.reload();
+
     }//GEN-LAST:event_jButton4MouseClicked
 
     private void cb_paciente1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_paciente1ActionPerformed
@@ -828,6 +832,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_sexo;
     private javax.swing.JTextField tf_sexo1;
     // End of variables declaration//GEN-END:variables
-public administrarDoctor ad = new administrarDoctor("./Persona.cbm");
+public administrarDoctor ad = new administrarDoctor("./Doctor.cbm");
     public administrarPaciente ap = new administrarPaciente("./Paciente.cbm");
 }

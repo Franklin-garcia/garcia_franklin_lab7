@@ -46,7 +46,7 @@ public class administrarDoctor {
     public String toString() {
         return "Lista persoans" + listaPersonas;
     }
-
+    
     //Mutador extra
     public void setPersona(Doctor P) {
         this.listaPersonas.add(P);
